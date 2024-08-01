@@ -32,7 +32,7 @@ polyLinesToVTK(filename, X, Y, Z, pointsPerLine=np.asarray([N]), pointData={'idx
 
 a = 0.7071067811865477
 mu0 = np.pi * 4 * 1e-7
-x = np.linspace(-1, 1, 5)
+x = np.linspace(-2, 2, 40)
 xv, yv, zv = np.meshgrid(x, x, x)
 x = np.ravel(xv)
 y = np.ravel(yv)
@@ -69,7 +69,8 @@ bz = ((mu(a) * b(a))/4) * (
     -(y - a)/(r3(x,y,z,a) * (r3(x,y,z,a) - x - a)) \
     +(x - a)/(r4(x,y,z,a) * (r4(x,y,z,a) - y + a)) \
     +(y - a)/(r4(x,y,z,a) * (r4(x,y,z,a) - x + a))))
-print(bx, by, bz)
+print(bx.shape, by.shape, bz.shape)
 
+# contig = np.ascontiguousarray
 data = {"B": (bx, by, bz)}
-pointsToVTK(filename + '_B', X, Y, Z, data=data)
+pointsToVTK(filename + '_B', x, y, z, data=data)

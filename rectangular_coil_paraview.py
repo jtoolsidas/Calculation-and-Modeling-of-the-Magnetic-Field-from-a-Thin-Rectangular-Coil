@@ -69,8 +69,13 @@ bz = ((mu(a) * b(a))/4) * (
     -(y - a)/(r3(x,y,z,a) * (r3(x,y,z,a) - x - a)) \
     +(x - a)/(r4(x,y,z,a) * (r4(x,y,z,a) - y + a)) \
     +(y - a)/(r4(x,y,z,a) * (r4(x,y,z,a) - x + a))))
-print(bx.shape, by.shape, bz.shape)
+print(bx.shape, by.shape, bz.shape, x.shape)
 
 # contig = np.ascontiguousarray
 data = {"B": (bx, by, bz)}
+
+# data = {"Forces": (Fx, Fy, Fz)}
+# pointsToVTK('Force_visualization', x, y, z, data=data)
+
+
 pointsToVTK(filename + '_B', x, y, z, data=data)
